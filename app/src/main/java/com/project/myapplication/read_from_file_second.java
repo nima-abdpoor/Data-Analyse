@@ -10,24 +10,40 @@ public class read_from_file_second {
     private String birthday;
     private String city;
     private String address;
-    public String [] arrfirstname=new String[11133];
-    public String [] arrlastname=new String[11133];
-    public String [] arrnationalcode=new String[11133];
-    public String [] arrbirthday=new String[11133];
-    public String [] arrcity=new String[11133];
-    public String [] arraddress=new String[11133];
+    public static int rowsize;
+    private boolean setarrayindexes=true;
+    public static String [] arrfirstname;
+    public String [] arrlastname;
+    public String [] arrnationalcode;
+    public String [] arrbirthday;
+    public String [] arrcity;
+    public String [] arraddress;
     public static int i=0;
+    public static int i2=-1;
 
-    public String getFirstname() {
-        return "";
+    public static String getFirstname() {
+        i2++;
+        return arrfirstname[i2];
     }
 
     public void setFirstname(String firstname) {
+        setarrayindexes();
         this.firstname = firstname;
-        if(i>11130){
-            Log.i("tag",firstname);
-        }
         arrfirstname[i]=firstname;
+        //Log.i("firs",arrfirstname[i]);
+        setarrayindexes =false;
+    }
+
+    private void setarrayindexes() {
+        if (setarrayindexes){
+            arrfirstname=new String[rowsize];
+            arrlastname=new String[rowsize];
+            arrnationalcode=new String[rowsize];
+            arrbirthday=new String[rowsize];
+            arrbirthday=new String[rowsize];
+            arrcity=new String[rowsize];
+            arraddress=new String[rowsize];
+        }
     }
 
     public String getLastname() {
@@ -71,11 +87,9 @@ public class read_from_file_second {
             Log.wtf("address",arraddress[j]);
         return "";
     }
-
     public void setAddress(String address) {
         this.address = address;
         arraddress[i]=address;
         i++;
     }
-
 }
