@@ -10,17 +10,44 @@ public class read_from_file_second {
     private String birthday;
     private String city;
     private String address;
-    public static int rowsize;
+    private String nationalcodephons;
+    private String number;
+    private String operator;
+    public static int rowsizepeople;
+    public static int rowsizephone;
     private boolean setarrayindexes=true;
+    private boolean setarrayindexesphones=true;
     public static String [] arrfirstname;
-    public String [] arrlastname;
-    public String [] arrnationalcode;
-    public String [] arrbirthday;
-    public String [] arrcity;
-    public String [] arraddress;
+    public static String [] arrlastname;
+    public static String [] arrnationalcode;
+    public static String [] arrbirthday;
+    public static String [] arrcity;
+    public static String [] arraddress;
+    public static String [] getArrnationalcodephones;
+    public static String [] arrnumber;
+    public static String [] arroperator;
     public static int i=0;
     public static int i2=-1;
-
+    public static int iphone=0;
+    public static int i2phones=-1;
+    private void setarrayindexes() {
+        if (setarrayindexes){
+            arrfirstname=new String[rowsizepeople];
+            arrlastname=new String[rowsizepeople];
+            arrnationalcode=new String[rowsizepeople];
+            arrbirthday=new String[rowsizepeople];
+            arrbirthday=new String[rowsizepeople];
+            arrcity=new String[rowsizepeople];
+            arraddress=new String[rowsizepeople];
+        }
+    }
+    private void setarrayindexesphones(){
+        if (setarrayindexesphones){
+            getArrnationalcodephones=new String[rowsizephone];
+            arroperator=new String[rowsizephone];
+            arroperator=new String[rowsizephone];
+        }
+    }
     public static String getFirstname() {
         i2++;
         return arrfirstname[i2];
@@ -34,20 +61,8 @@ public class read_from_file_second {
         setarrayindexes =false;
     }
 
-    private void setarrayindexes() {
-        if (setarrayindexes){
-            arrfirstname=new String[rowsize];
-            arrlastname=new String[rowsize];
-            arrnationalcode=new String[rowsize];
-            arrbirthday=new String[rowsize];
-            arrbirthday=new String[rowsize];
-            arrcity=new String[rowsize];
-            arraddress=new String[rowsize];
-        }
-    }
-
-    public String getLastname() {
-        return lastname;
+    public static String getLastname() {
+        return arrlastname[i2];
     }
 
     public void setLastname(String lastname) {
@@ -55,8 +70,8 @@ public class read_from_file_second {
         arrlastname[i]=lastname;
     }
 
-    public String getNationalecode() {
-        return nationalecode;
+    public static String getNationalecode() {
+        return arrnationalcode[i2];
     }
 
     public void setNationalecode(String nationalecode) {
@@ -64,8 +79,9 @@ public class read_from_file_second {
         arrnationalcode[i]=nationalecode;
     }
 
-    public String getBirthday() {
-        return birthday;
+    public static String getBirthday()
+    {
+        return arrbirthday[i2];
     }
 
     public void setBirthday(String birthday) {
@@ -73,8 +89,9 @@ public class read_from_file_second {
         arrbirthday[i]=birthday;
     }
 
-    public String getCity() {
-        return city;
+    public static String getCity() {
+
+        return arrcity[i2];
     }
 
     public void setCity(String city) {
@@ -82,14 +99,37 @@ public class read_from_file_second {
         arrcity[i]=city;
     }
 
-    public String getAddress() {
-        for(int j=0; j<10; j++)
-            Log.wtf("address",arraddress[j]);
-        return "";
+    public static String getAddress() {
+        return arraddress[i2];
     }
     public void setAddress(String address) {
         this.address = address;
         arraddress[i]=address;
         i++;
+    }
+    public void setNationalcodephons(String nationalcodephons) {
+        setarrayindexesphones();
+        this.nationalcodephons=nationalcodephons;
+        getArrnationalcodephones[iphone]=nationalcodephons;
+        setarrayindexesphones=false;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public void setOperator(String operator) {
+        this.operator = operator;
+    }
+    public static String getNationalcodephons() {
+        return getArrnationalcodephones[i2phones];
+    }
+
+    public static String getNumber() {
+        return arrnumber[i2phones];
+    }
+
+    public static String getOperator() {
+        return arroperator[i2phones];
     }
 }
