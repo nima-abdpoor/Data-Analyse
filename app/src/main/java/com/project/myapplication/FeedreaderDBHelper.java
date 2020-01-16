@@ -5,8 +5,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import static com.project.myapplication.read_from_file_second.rowsizepeople;
-import static com.project.myapplication.read_from_file_second.rowsizephone;
 
 public class FeedreaderDBHelper  extends SQLiteOpenHelper {
     MainActivity mainActivity=new MainActivity();
@@ -25,6 +23,7 @@ public class FeedreaderDBHelper  extends SQLiteOpenHelper {
                 "'nationalcode' text ," +
                 "'birthday' text ," +
                 "'city' text  ," +
+                "'work' text  ," +
                 "'address' text  " +
                 ")";
         sqLiteDatabase.execSQL(Query);
@@ -39,39 +38,40 @@ public class FeedreaderDBHelper  extends SQLiteOpenHelper {
 
     @Override
     public  void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
-        mainActivity.readfilepeople();
         String firstname;
         String lastname;
         String nationalcodepeople;
         String birthday;
         String city;
+        String work;
         String address;
-        for(int i = 0; i< rowsizepeople; i++) {
+        for(int i = 0; i< MainActivity.sizepeople; i++) {
             firstname=read_from_file_second.getFirstname();
             lastname=read_from_file_second.getLastname();
             nationalcodepeople=read_from_file_second.getNationalecode();
             birthday=read_from_file_second.getBirthday();
             city=read_from_file_second.getCity();
+            work=read_from_file_second.getWork();
             address=read_from_file_second.getAddress();
-            String query2 = "insert INTO 'people' ( 'firstname' , 'lastname' , " +
-                    "'nationalcode' , 'birthday' , 'city' , 'address') " +
+            String query1 = "insert INTO 'people' ( 'firstname' , 'lastname' , " +
+                    "'nationalcode' , 'birthday' , 'city' , 'work' , 'address') " +
                     "values ('"+firstname+"','"+lastname+"' " +
-                    ", '"+nationalcodepeople+"','"+birthday+"','"+city+"','"+address+"')";
-            Log.wtf("test",firstname+" | "+lastname+" | "+nationalcodepeople+ " | "+birthday+" | "+city+" | "+address);
-            sqLiteDatabase.execSQL(query2);
-            mainActivity.readfilephones();
-            String nationalcodephone;
-            String number;
-            String operator;
-            for (int j=0;j<rowsizephone;++j){
-                nationalcodephone=read_from_file_second.getNationalcodephons();
-                number=read_from_file_second.getNumber();
-                operator=read_from_file_second.getOperator();
-                String query3="INSERT INTO 'phones'( 'nationalcode' , 'number' ,'operator')"+
-                        "values ('"+nationalcodephone+"','"+number+"' ,'"+operator+"')";
-                Log.wtf("test",nationalcodephone+" | "+number+" | "+operator);
-                sqLiteDatabase.execSQL(query3);
+                    ", '"+nationalcodepeople+"','"+birthday+"','"+city+"', '"+work+"' ,'"+address+"')";
+            //Log.wtf("test",firstname+" | "+lastname+" | "+nationalcodepeople+ " | "+birthday+" | "+city+" | "+work+" | "+address+" |");
+            sqLiteDatabase.execSQL(query1);
             }
+        String nationalcodephone;
+        String number;
+        String operator;
+        for(int j=0;j<MainActivity.sizephone;j++){
+            nationalcodephone=Readfromphones.getNationalcodephone();
+            number=Readfromphones.getNumber();
+            operator=Readfromphones.getOperator();
+            String query2="INSERT INTO 'phones'('nationalcode','number','operator')"+
+                    " VALUES ('"+nationalcodephone+"','"+number+"','"+operator+"')";
+            sqLiteDatabase.execSQL(query2);
+            //Log.wtf("test2",nationalcodephone+" | "+number+" | "+operator+ " | ");
+        }
         }
     }
-}
+
