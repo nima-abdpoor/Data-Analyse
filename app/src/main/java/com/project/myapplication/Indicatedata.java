@@ -1,19 +1,14 @@
 package com.project.myapplication;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
-
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Set;
-
 public class Indicatedata extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +25,6 @@ public class Indicatedata extends AppCompatActivity {
 //        peopleListViewAdapter adapter=new peopleListViewAdapter(this,peoples);
 //        list_people.setAdapter(adapter);
     }
-
     private void showtable() {
         FeedreaderDBHelper Fhelper=new FeedreaderDBHelper(this);
         SQLiteDatabase db=Fhelper.getWritableDatabase();

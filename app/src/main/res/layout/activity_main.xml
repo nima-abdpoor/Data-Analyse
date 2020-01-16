@@ -5,8 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
-
     <EditText
         android:id="@+id/editText"
         android:layout_width="wrap_content"
@@ -15,7 +13,6 @@
         android:layout_centerHorizontal="true"
         android:ems="10"
         android:inputType="number" />
-
     <Button
         android:id="@+id/bottom"
         android:layout_below="@+id/editText"
@@ -26,5 +23,4 @@
         android:onClick="confirmbottom"
         android:layout_centerHorizontal="true"
         android:text="Confirm" />
-
 </RelativeLayout>

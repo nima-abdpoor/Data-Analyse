@@ -1,7 +1,5 @@
 package com.project.myapplication;
-
 import android.util.Log;
-
 public class read_from_file_second {
     //read from people
     private String firstname;
@@ -22,19 +20,16 @@ public class read_from_file_second {
     public static String [] arraddress;
     public static int i=0;
     public static int i2=-1;
-
     public static String getFirstname() {
         i2++;
         return arrfirstname[i2];
     }
-
     public void setFirstname(String firstname) {
         setarrayindexes();
         this.firstname = firstname;
         arrfirstname[i]=firstname;
         setarrayindexes =false;
     }
-
     private void setarrayindexes() {
         if (setarrayindexes){
             arrfirstname=new String[rowsizepeople];
@@ -47,42 +42,32 @@ public class read_from_file_second {
             arraddress=new String[rowsizepeople];
         }
     }
-
     public static String getLastname()
     {
         return arrlastname[i2];
     }
-
     public void setLastname(String lastname) {
         this.lastname = lastname;
         arrlastname[i]=lastname;
     }
-
     public static String getNationalecode()
     {
         return arrnationalcode[i2];
     }
-
     public void setNationalecode(String nationalecode) {
         this.nationalecode = nationalecode;
         arrnationalcode[i]=nationalecode;
     }
-
     public static String getBirthday() {
-
         return arrbirthday[i2];
     }
-
     public void setBirthday(String birthday) {
         this.birthday = birthday;
         arrbirthday[i]=birthday;
     }
-
     public static String getCity() {
-
         return arrcity[i2];
     }
-
     public void setCity(String city) {
         this.city = city;
         arrcity[i]=city;
@@ -95,7 +80,6 @@ public class read_from_file_second {
         arrwork[i]=work;
     }
     public static String getAddress() {
-
         return arraddress[i2];
     }
     public void setAddress(String address) {
