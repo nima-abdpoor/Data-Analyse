@@ -45,6 +45,10 @@ public class MainActivity extends AppCompatActivity {
         Readfromcalls.i=0;
         Readfromtransactions.i=0;
         Readfromrelationships.i=0;
+        Readfromhomes.i=0;
+        Readfromownership.i=0;
+        Readfromaccounts.i=0;
+        Readfromownership.i=0;
             readfilepeople();
             readfilephones();
             readfilecars();
@@ -60,22 +64,23 @@ public class MainActivity extends AppCompatActivity {
         InputStream inputStream = getResources().openRawResource(R.raw.people);
         BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(inputStream,Charset.forName("UTF-8")));
         String line;
-        rowsizepeople=5001;
+        rowsizepeople=10000;
             try {
                 bufferedReader.readLine();
                 while ( (line = bufferedReader.readLine()) != null) {
                     sizepeople++;
-                    line=line.replace('"','*');
-                    line=line.replace("*,*","_");
-                    line=line.replace("*","_");
-                    line=line.replace(',',' ');
-                    String [] token=line.split("_");
-                    readfromsecond.setFirstname(token[1]);
-                    readfromsecond.setLastname(token[2]);
-                    readfromsecond.setNationalecode(token[3]);
-                    readfromsecond.setBirthday(token[4]);
-                    readfromsecond.setCity(token[5]);
-                    readfromsecond.setWork(token[6]);
+//                    line=line.replace('"','*');
+//                    line=line.replace("*,*","_");
+//                    line=line.replace("*","_");
+//                    line=line.replace(',',' ');
+//                    String [] token=line.split("_");
+                    String [] token=line.split(",");
+                    readfromsecond.setFirstname(token[0]);
+                    readfromsecond.setLastname(token[1]);
+                    readfromsecond.setNationalecode(token[2]);
+                    readfromsecond.setBirthday(token[3]);
+                    readfromsecond.setCity(token[4]);
+                    readfromsecond.setWork(token[5]);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -86,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
           InputStream inputStream=getResources().openRawResource(R.raw.phones);
               BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(inputStream,Charset.forName("UTF-8")));
               String line;
-              rowsizephone=46;
+              rowsizephone=5005;
               try {
                   while ( (line = bufferedReader.readLine()) != null){
                       sizephone++;
@@ -104,10 +109,10 @@ public class MainActivity extends AppCompatActivity {
           }
     public void readfilecars(){
         Readfromcars readfromcars=new Readfromcars();
-        InputStream inputStream=getResources().openRawResource(R.raw.cars);
+        InputStream inputStream=getResources().openRawResource(R.raw.car);
         BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(inputStream,Charset.forName("UTF-8")));
         String line;
-        rowsizecars=126;
+        rowsizecars=20023;
         try {
             while ( (line = bufferedReader.readLine()) != null){
                 sizecars++;
@@ -125,10 +130,10 @@ public class MainActivity extends AppCompatActivity {
     }
     public void readfilehomes(){
         Readfromhomes readfromhomes=new Readfromhomes();
-        InputStream inputStream=getResources().openRawResource(R.raw.homes);
+        InputStream inputStream=getResources().openRawResource(R.raw.home);
         BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(inputStream,Charset.forName("UTF-8")));
         String line;
-        rowsizehome=91;
+        rowsizehome=19816;
         try {
             while ( (line = bufferedReader.readLine()) != null){
                 sizehome++;
@@ -150,11 +155,12 @@ public class MainActivity extends AppCompatActivity {
     }
     public void readfileaccounts(){
         Readfromaccounts readfromaccounts=new Readfromaccounts();
-        InputStream inputStream=getResources().openRawResource(R.raw.accounts);
+        InputStream inputStream=getResources().openRawResource(R.raw.account);
         BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(inputStream,Charset.forName("UTF-8")));
         String line;
-        rowsizeaccount=191;
+        rowsizeaccount=20042;
         try {
+            bufferedReader.readLine();
             while ( (line = bufferedReader.readLine()) != null){
                 sizeaccounts++;
                 line=line.replace('"',' ');
@@ -174,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
         InputStream inputStream=getResources().openRawResource(R.raw.calls);
         BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(inputStream,Charset.forName("UTF-8")));
         String line;
-        rowsizecalls=500;
+        rowsizecalls=30000;
         try {
             bufferedReader.readLine();
             while ( (line = bufferedReader.readLine()) != null){
@@ -195,10 +201,10 @@ public class MainActivity extends AppCompatActivity {
     }
     public void readfiletransactions(){
         Readfromtransactions readfromtransactions=new Readfromtransactions();
-        InputStream inputStream=getResources().openRawResource(R.raw.transactions);
+        InputStream inputStream=getResources().openRawResource(R.raw.transaction);
         BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(inputStream,Charset.forName("UTF-8")));
         String line;
-        rowsizetransactions=10000;
+        rowsizetransactions=29999;
         try {
             bufferedReader.readLine();
             while ( (line = bufferedReader.readLine()) != null){
@@ -218,12 +224,12 @@ public class MainActivity extends AppCompatActivity {
     }
     public void readfileownerships(){
         Readfromownership readfromownership=new Readfromownership();
-        InputStream inputStream=getResources().openRawResource(R.raw.ownerships);
+        InputStream inputStream=getResources().openRawResource(R.raw.ownership);
         BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(inputStream,Charset.forName("UTF-8")));
         String line;
         String line2 = "";
         int salam=0;
-        rowsizeownership=12352;
+        rowsizeownership=33351;
         try {
             bufferedReader.readLine();
             while ( (line = bufferedReader.readLine()) != null){
@@ -248,10 +254,10 @@ public class MainActivity extends AppCompatActivity {
     }
     public void readfilerelationships(){
         Readfromrelationships readfromrelationships=new Readfromrelationships();
-        InputStream inputStream=getResources().openRawResource(R.raw.relationships);
+        InputStream inputStream=getResources().openRawResource(R.raw.relationship);
         BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(inputStream,Charset.forName("UTF-8")));
         String line;
-        rowsizerealationships=2001;
+        rowsizerealationships=60000;
         try {
             bufferedReader.readLine();
             while ( (line = bufferedReader.readLine()) != null){
@@ -281,6 +287,14 @@ public class MainActivity extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem menuItem) {
                 Intent intent = new Intent(MainActivity.this,phase1Activity.class);
                 startActivity(intent);
+                return false;
+            }
+        });
+        intentSubmenu.add("phase3").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                Intent intent2 = new Intent(MainActivity.this,phase3.class);
+                startActivity(intent2);
                 return false;
             }
         });

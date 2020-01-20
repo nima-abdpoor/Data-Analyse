@@ -47,10 +47,10 @@ public class FeedreaderDBHelper  extends SQLiteOpenHelper {
                 ")";
         sqLiteDatabase.execSQL(Query4);
         String Query5="CREATE TABLE accounts("+
-                "'nationalcode' INT,"+
+                "'nationalcodeaccount' INT,"+
                 "'bankname' TEXT,"+
                 "'sheba' TEXT,"+
-                "'accountnumber' TEXT"+
+                "'accountnumber' INT"+
                 ")";
         sqLiteDatabase.execSQL(Query5);
         String Query6="CREATE TABLE calls("+
@@ -159,7 +159,7 @@ public class FeedreaderDBHelper  extends SQLiteOpenHelper {
             bankname=Readfromaccounts.getBankname();
             sheba= Readfromaccounts.getSheba();
             accountnumber= Readfromaccounts.getAccountnumber();
-            String query3="INSERT INTO 'accounts'('nationalcode','bankname','sheba','accountnumber')"+
+            String query3="INSERT INTO 'accounts'('nationalcodeaccount','bankname','sheba','accountnumber')"+
                     " VALUES ('"+nationalcodeaccounts+"','"+bankname+"','"+sheba+"','"+accountnumber+"')";
             sqLiteDatabase.execSQL(query3);
             //Log.wtf("test5",nationalcodeaccounts+" | "+bankname+" | "+sheba+" | "+accountnumber+" | ");
