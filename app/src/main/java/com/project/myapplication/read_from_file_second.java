@@ -78,13 +78,6 @@ public class read_from_file_second {
     public void setWork(String work){
         this.work=work;
         arrwork[i]=work;
-    }
-    public static String getAddress() {
-        return arraddress[i2];
-    }
-    public void setAddress(String address) {
-        this.address = address;
-        arraddress[i]=address;
         i++;
     }
 }
