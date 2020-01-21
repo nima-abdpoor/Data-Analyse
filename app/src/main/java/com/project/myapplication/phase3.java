@@ -62,7 +62,7 @@ public class phase3 extends AppCompatActivity {
             date=cursor.getString(cursor.getColumnIndex("date"));
              work=cursor.getString(cursor.getColumnIndex("work"));
              nationalcodeaccount=cursor.getString(cursor.getColumnIndex("nationalcodeaccount"));
-           Log.i("javab",firstname+" "+lastname+" is a person with "+nationalcode+" nathinalcode who transferd "+amount+"to person with "+relativenationalcode+" accoutn number and this nationalcode "+nationalcodeaccount+" who has bought "+things+" "+date+work);
+           //Log.i("GHachghchiha",firstname+" "+lastname+" is a person with "+nationalcode+" nathinalcode who transferd "+amount+"to person with "+relativenationalcode+" accoutn number and this nationalcode "+nationalcodeaccount+" who has bought "+things+" "+date+work);
             //String date=cursor.getString(cursor.getColumnIndex("things"));
             //String nationalcode=cursor.getString(cursor.getColumnIndex("date"));
             //Log.i("salam","nationalcode : "+firstname+" | "+"relaticve person : "+ relativenationalcode +" | "+"amount"+amount);
@@ -88,7 +88,7 @@ public class phase3 extends AppCompatActivity {
 //            Log.i("pesar",arrto[i]);
         }
         cursor1.close();
-        Cursor cursor2=sqLiteDatabase.rawQuery("SELECT * " +
+        Cursor cursor2=sqLiteDatabase.rawQuery("SELECT DISTINCT * " +
                 " FROM  people " +
                 " join phase2 " +
                 " on people.nationalcode = phase2.nationalcodephase2 "+
@@ -99,10 +99,11 @@ public class phase3 extends AppCompatActivity {
             nationalcode=cursor2.getString(cursor2.getColumnIndex("nationalcode"));
             firstname=cursor2.getString(cursor2.getColumnIndex("firstname"));
             lastname=cursor2.getString(cursor2.getColumnIndex("lastname"));
-            relation=cursor2.getString(cursor2.getColumnIndex("relation"));
+            //relation=cursor2.getString(cursor2.getColumnIndex("relation"));
             things=cursor2.getString(cursor2.getColumnIndex("things"));
             datebought=cursor2.getString(cursor2.getColumnIndex("datebought"));
-            Log.i("phase3",firstname+" "+lastname+" is a person with "+nationalcode +" has "+relation+" relation "+things+datebought);
+            Log.i("phase3",firstname+" "+lastname+" is a person with "+nationalcode +" nationalcode ");
            }
+        cursor2.close();
     }
 }

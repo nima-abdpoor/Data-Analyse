@@ -298,6 +298,14 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+        intentSubmenu.add("phase4").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                Intent intent3 = new Intent(MainActivity.this,phase4.class);
+                startActivity(intent3);
+                return false;
+            }
+        });
         return super.onCreateOptionsMenu(menu);
     }
 }
