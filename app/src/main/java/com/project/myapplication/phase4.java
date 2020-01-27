@@ -6,13 +6,25 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class phase4 extends AppCompatActivity {
-
+    ListView listView;
+    List<String> mylist;
+    List<String> mylist2;
+    ArrayAdapter<String> arrayAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phase4);
+        listView =findViewById(R.id.ListView);
+        mylist=new ArrayList<>();
         FeedreaderDBHelper feedreaderDBHelper=new FeedreaderDBHelper(this);
         SQLiteDatabase sqLiteDatabase=feedreaderDBHelper.getReadableDatabase();
         String query2="drop table if exists suspectsphones";
@@ -26,7 +38,6 @@ public class phase4 extends AppCompatActivity {
                 " FROM  phase2 " +
                 " join phones " +
                 " on phones.nationalcode = phase2.nationalcodephase2 "+
-                //"WHERE people.work like 'قاچاقچی'"+
                 "",null);
         while (cursor2.moveToNext()) {
            String nationalcode2=cursor2.getString(cursor2.getColumnIndex("nationalcode"));
@@ -56,6 +67,31 @@ public class phase4 extends AppCompatActivity {
             Log.i("phase45"," | "+phonenumber);
         }
         cursor3.close();
+        mylist =getallpeople();
+        Refreshdisplay();
+
+
+    }
+    public Cursor indicatephase4(){
+        FeedreaderDBHelper feedreaderDBHelper=new FeedreaderDBHelper(this);
+        SQLiteDatabase sqLiteDatabase=feedreaderDBHelper.getReadableDatabase();
+        Cursor cursor4=sqLiteDatabase.rawQuery("SELECT DISTINCT * " +
+                " FROM calls " +
+                " join ghachghchiphones " +
+                " on ghachghchiphones.number = calls.[from] "+
+                " join suspectsphones"+
+                " on suspectsphones.numbersuspect = calls.[to] "+
+                "",null);
+        return cursor4;
+    }
+    private void Refreshdisplay(){
+        if(mylist ==null)mylist=new ArrayList<>();
+        arrayAdapter =new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,mylist);
+        listView.setAdapter(arrayAdapter);
+    }
+    public List<String> getallpeople(){
+        FeedreaderDBHelper feedreaderDBHelper=new FeedreaderDBHelper(this);
+        SQLiteDatabase sqLiteDatabase=feedreaderDBHelper.getReadableDatabase();
         Cursor cursor4=sqLiteDatabase.rawQuery("SELECT DISTINCT * " +
                 " FROM calls " +
                 " join ghachghchiphones " +
@@ -67,8 +103,10 @@ public class phase4 extends AppCompatActivity {
             String nationalcode3=cursor4.getString(cursor4.getColumnIndex("nationalcodesuspect"));
             String phonenumber=cursor4.getString(cursor4.getColumnIndex("number"));
             String duration=cursor4.getString(cursor4.getColumnIndex("duration"));
-            Log.i("end",nationalcode3+" | "+duration+" | "+phonenumber);
+            String end ="this nationalcode : "+nationalcode3+"\nwith this number : "+phonenumber+"\ntime : "+duration;
+            mylist.add(end);
         }
         cursor4.close();
+        return mylist;
     }
 }

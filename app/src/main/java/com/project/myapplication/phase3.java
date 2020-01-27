@@ -6,17 +6,24 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class phase3 extends AppCompatActivity {
-
+    ListView listView;
+    List<String> mylist;
+    ArrayAdapter<String> arrayAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phase3);
+        listView =findViewById(R.id.ListView);
+        mylist=new ArrayList<>();
         FeedreaderDBHelper feedreaderDBHelper=new FeedreaderDBHelper(this);
         SQLiteDatabase sqLiteDatabase=feedreaderDBHelper.getReadableDatabase();
-        //accounts.nationalcode , transactions.[to] , people.work
-        int sizeto=0;
         String accountnumber;
         String nationalcode;
         String firstname;
@@ -30,7 +37,6 @@ public class phase3 extends AppCompatActivity {
         String nationalcodeaccount;
         String relation;
         int i=0;
-        String [] arrto=new String[10000];
         String query="drop table if exists phase2";
         sqLiteDatabase.execSQL(query);
         String query1="Create table phase2(" +
@@ -38,7 +44,7 @@ public class phase3 extends AppCompatActivity {
                 "'nationalcodephase2' INT " +
                 ")";
         sqLiteDatabase.execSQL(query1);
-        Cursor cursor=sqLiteDatabase.rawQuery("SELECT * " +
+        Cursor cursor=sqLiteDatabase.rawQuery("SELECT DISTINCT * " +
                 "FROM  accounts " +
                 " join people " +
                 "on people.nationalcode = accounts.nationalcodeaccount "+
@@ -46,33 +52,12 @@ public class phase3 extends AppCompatActivity {
                 " on accounts.accountnumber = transactions.[from] "+
                 " join ownerships"+
                 " on ownerships.[from] = people.nationalcode "+
-                //"join phase1 "+
-                //"on  = phase1.nationalcode"+
                 " where  people.work ='قاچاقچی'"+
                 "",null);
         while (cursor.moveToNext()) {
-             nationalcode=cursor.getString(cursor.getColumnIndex("nationalcode"));
-             firstname=cursor.getString(cursor.getColumnIndex("firstname"));
-             lastname=cursor.getString(cursor.getColumnIndex("lastname"));
              relativenationalcode=cursor.getString(cursor.getColumnIndex("to"));
             sqLiteDatabase.execSQL("INSERT INTO 'phase2'('accountnumber')"+
                     " VALUES ('"+relativenationalcode+"')");
-            amount=cursor.getString(cursor.getColumnIndex("amount"));
-            things=cursor.getString(cursor.getColumnIndex("things"));
-            date=cursor.getString(cursor.getColumnIndex("date"));
-             work=cursor.getString(cursor.getColumnIndex("work"));
-             nationalcodeaccount=cursor.getString(cursor.getColumnIndex("nationalcodeaccount"));
-           //Log.i("GHachghchiha",firstname+" "+lastname+" is a person with "+nationalcode+" nathinalcode who transferd "+amount+"to person with "+relativenationalcode+" accoutn number and this nationalcode "+nationalcodeaccount+" who has bought "+things+" "+date+work);
-            //String date=cursor.getString(cursor.getColumnIndex("things"));
-            //String nationalcode=cursor.getString(cursor.getColumnIndex("date"));
-            //Log.i("salam","nationalcode : "+firstname+" | "+"relaticve person : "+ relativenationalcode +" | "+"amount"+amount);
-//            String birthday=cursor.getString(cursor.getColumnIndex("birthday"));
-//            String to=cursor.getString(cursor.getColumnIndex("to"));
-//            String city=cursor.getString(cursor.getColumnIndex("city"));
-//            String work=cursor.getString(cursor.getColumnIndex("work"));
-//            String things=cursor.getString(cursor.getColumnIndex("things"));
-//            String boughtdate=cursor.getString(cursor.getColumnIndex("ownerships.boughtdate"));
- //           Log.i("salam","name : "+firstname+" | "+"lastname : "+ lastname +" | "+"+nationalcode : "+nationalcode+"|"+"relation : "+ relation+"date : "+ date+"birthday : "+ birthday+"to : "+ to+"city : "+ city+"work : "+ work+"thigns : "+ things+"bought : "+ boughtdate);
         }
         cursor.close();
         Cursor cursor1=sqLiteDatabase.rawQuery("SELECT accounts.nationalcodeaccount" +
@@ -85,9 +70,22 @@ public class phase3 extends AppCompatActivity {
         while (cursor1.moveToNext()) {
             sqLiteDatabase.execSQL("INSERT INTO 'phase2'('nationalcodephase2')"+
                     " VALUES ('"+cursor1.getString(cursor1.getColumnIndex("nationalcodeaccount"))+"')");
-//            Log.i("pesar",arrto[i]);
         }
         cursor1.close();
+        mylist=getallpeople();
+        Refreshdisplay();
+
+    }
+    private void Refreshdisplay(){
+        if(mylist ==null)mylist=new ArrayList<>();
+        arrayAdapter =new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,mylist);
+        listView.setAdapter(arrayAdapter);
+    }
+    public List<String> getallpeople(){
+        ArrayList<String> newlist=new ArrayList<>();
+        FeedreaderDBHelper feedreaderDBHelper=new FeedreaderDBHelper(this);
+        SQLiteDatabase sqLiteDatabase=feedreaderDBHelper.getReadableDatabase();
+        List<String> peoplelist=new ArrayList<>();
         Cursor cursor2=sqLiteDatabase.rawQuery("SELECT DISTINCT * " +
                 " FROM  people " +
                 " join phase2 " +
@@ -96,14 +94,20 @@ public class phase3 extends AppCompatActivity {
                 " on phase1.nationalcode =  phase2.nationalcodephase2"+
                 "",null);
         while (cursor2.moveToNext()) {
-            nationalcode=cursor2.getString(cursor2.getColumnIndex("nationalcode"));
-            firstname=cursor2.getString(cursor2.getColumnIndex("firstname"));
-            lastname=cursor2.getString(cursor2.getColumnIndex("lastname"));
-            //relation=cursor2.getString(cursor2.getColumnIndex("relation"));
-            things=cursor2.getString(cursor2.getColumnIndex("things"));
-            datebought=cursor2.getString(cursor2.getColumnIndex("datebought"));
-            Log.i("phase3",firstname+" "+lastname+" is a person with "+nationalcode +" nationalcode ");
-           }
+           String nationalcode=cursor2.getString(cursor2.getColumnIndex("nationalcode"));
+           String firstname=cursor2.getString(cursor2.getColumnIndex("firstname"));
+           String lastname=cursor2.getString(cursor2.getColumnIndex("lastname"));
+           String things=cursor2.getString(cursor2.getColumnIndex("things"));
+           String datebought=cursor2.getString(cursor2.getColumnIndex("datebought"));
+           peoplelist.add(firstname +" "+lastname+"\nthis nationalcode : "+nationalcode+"\n"+"bought "+things+" on : "+datebought);
+            for (String element:peoplelist
+            ) {
+                if(!newlist.contains(element)){
+                    newlist.add(element);
+                }
+            }
+        }
         cursor2.close();
+        return newlist;
     }
 }

@@ -285,8 +285,8 @@ public class MainActivity extends AppCompatActivity {
         intentSubmenu.add("phase1").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                Intent intent = new Intent(MainActivity.this,phase1Activity.class);
-                startActivity(intent);
+                Intent intent4 = new Intent(MainActivity.this,Phase2.class);
+                startActivity(intent4);
                 return false;
             }
         });
@@ -295,6 +295,14 @@ public class MainActivity extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem menuItem) {
                 Intent intent2 = new Intent(MainActivity.this,phase3.class);
                 startActivity(intent2);
+                return false;
+            }
+        });
+        intentSubmenu.add("phase2").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                Intent intent = new Intent(MainActivity.this,phase1Activity.class);
+                startActivity(intent);
                 return false;
             }
         });
