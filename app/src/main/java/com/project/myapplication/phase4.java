@@ -2,11 +2,14 @@ package com.project.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -18,12 +21,21 @@ public class phase4 extends AppCompatActivity {
     ListView listView;
     List<String> mylist;
     List<String> mylist2;
+    Button button;
     ArrayAdapter<String> arrayAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phase4);
         listView =findViewById(R.id.ListView);
+        button=findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(phase4.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
         mylist=new ArrayList<>();
         FeedreaderDBHelper feedreaderDBHelper=new FeedreaderDBHelper(this);
         SQLiteDatabase sqLiteDatabase=feedreaderDBHelper.getReadableDatabase();

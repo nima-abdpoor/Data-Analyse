@@ -6,7 +6,7 @@ import android.util.Log;
 
 public class FeedreaderDBHelper  extends SQLiteOpenHelper {
     MainActivity mainActivity=new MainActivity();
-    public static final int database_version=2;
+    public static final int database_version=1;
     public static final String database_name="Feedreader.db";
     public FeedreaderDBHelper( Context context) {
         super(context, database_name, null, database_version);

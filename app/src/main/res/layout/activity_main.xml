@@ -3,24 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#64B3F3"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="wrap_content"
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:inputType="number" />
-    <Button
-        android:id="@+id/bottom"
-        android:layout_below="@+id/editText"
-        android:layout_marginBottom="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAllCaps="false"
-        android:onClick="confirmbottom"
-        android:layout_centerHorizontal="true"
-        android:text="Confirm" />
+        android:gravity="center"
+        android:textSize="20dp"
+        android:textColor="#000000"
+        android:text="update needed" />
 </RelativeLayout>

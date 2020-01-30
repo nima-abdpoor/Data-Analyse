@@ -2,11 +2,14 @@ package com.project.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -15,13 +18,22 @@ import java.util.List;
 public class phase1Activity extends AppCompatActivity {
     ListView listView;
     List<String> mylist;
+    Button button;
     ArrayAdapter<String> arrayAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phase1);
+        button=findViewById(R.id.button);
         listView =findViewById(R.id.ListView);
         mylist=new ArrayList<>();
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(phase1Activity.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
         FeedreaderDBHelper Fhelper=new FeedreaderDBHelper(this);
         SQLiteDatabase db=Fhelper.getReadableDatabase();
         String query="drop table if exists phase1";

@@ -2,6 +2,7 @@ package com.project.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -20,6 +22,7 @@ public class Phase2 extends AppCompatActivity {
     List<String> mylist;
     TextView textView;
     TextView textView2;
+    Button button;
     ArrayAdapter<String> arrayAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +31,16 @@ public class Phase2 extends AppCompatActivity {
         listView =findViewById(R.id.ListView);
         textView=findViewById(R.id.textView2);
         textView2=findViewById(R.id.textView3);
+        button =findViewById(R.id.button);
+        button.setVisibility(View.GONE);
         mylist=new ArrayList<>();
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Phase2.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
     private void Refreshdisplay(){
         if(mylist ==null)mylist=new ArrayList<>();
@@ -105,6 +117,7 @@ public class Phase2 extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
                 textView2.setVisibility(View.GONE);
+                button.setVisibility(View.VISIBLE);
                 mylist =getallpeople();
                 Refreshdisplay();
                 return false;
@@ -114,6 +127,7 @@ public class Phase2 extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
                 textView2.setVisibility(View.GONE);
+                button.setVisibility(View.VISIBLE);
                 mylist =getallhomes();
                 Refreshdisplay();
                 return false;
@@ -123,6 +137,7 @@ public class Phase2 extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
                 textView2.setVisibility(View.GONE);
+                button.setVisibility(View.VISIBLE);
                 mylist=getallcars();
                 Refreshdisplay();
                 return false;
@@ -132,6 +147,7 @@ public class Phase2 extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
                 textView2.setVisibility(View.GONE);
+                button.setVisibility(View.VISIBLE);
                 mylist=getallownerships();
                 Refreshdisplay();
                 return false;
