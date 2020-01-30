@@ -1,2 +1,2 @@
 # Data-Analyse
-please read project.pdf app/scr/main/res/raw/project.pdf
+please read project.pdf app/src/main/res/raw/project.pdf
