@@ -1,0 +1,77 @@
+[33mcommit 613502cb6934df41611f6e74a0fef6738b1abe7f[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: nima <nimaabdi328@yahoo.com>
+Date:   Thu Jan 30 14:11:53 2020 +0330
+
+    version 2 finished.
+
+[33mcommit 6b3a90487612cd1948571dd119013450fa2d3442[m
+Author: nima <nimaabdi328@yahoo.com>
+Date:   Thu Jan 30 13:21:34 2020 +0330
+
+    version 1 finished.
+
+[33mcommit cfed0ed32116e0930d20c762fdd127e0b33f43fd[m
+Author: nima <nimaabdi328@yahoo.com>
+Date:   Mon Jan 27 23:40:45 2020 +0330
+
+    basic GUI has completed.
+
+[33mcommit 511d25d661d908f1562df0d057b6483a9715d3f3[m
+Author: nima <nimaabdi328@yahoo.com>
+Date:   Tue Jan 21 05:46:16 2020 +0330
+
+    phase4 is finished. :)
+
+[33mcommit bde5d10614c9192c90bc2b9b4cf3b5ca7b1b7cc0[m
+Author: nima <nimaabdi328@yahoo.com>
+Date:   Tue Jan 21 00:57:07 2020 +0330
+
+    phase3 successfully added.
+
+[33mcommit 331d7f59bb3c64961a1cc117f71e5c0e709d3a28[m
+Author: nima <nimaabdi328@yahoo.com>
+Date:   Mon Jan 20 13:47:50 2020 +0330
+
+    phase 2 successfully finished in phase1 class. ._.
+
+[33mcommit bf03c9ed27ed68152b1f49e8b8d816385c632a52[m
+Author: nima <nimaabdi328@yahoo.com>
+Date:   Fri Jan 17 02:43:08 2020 +0330
+
+    just ownerships and relationships remained.
+
+[33mcommit f4c56996376709c432d92889957e9753a2dc6946[m
+Author: nima <nimaabdi328@yahoo.com>
+Date:   Thu Jan 16 18:25:49 2020 +0330
+
+    people and phone tables successfully added.
+
+[33mcommit 0ca9a6b2d66e706e6768955e76b9e527c491cb3c[m
+Author: nima <nimaabdpoor@gmail.com>
+Date:   Fri Jan 10 14:44:45 2020 +0330
+
+    i have a error "java.io.IOException: The cloud file provider is not running" that is .i dont know what happened :|
+
+[33mcommit 62b26fab754a4740933200181d753ac7ee156228[m
+Author: nima <nimaabdpoor@gmail.com>
+Date:   Sun Jan 5 14:11:07 2020 +0330
+
+    selecting Firstname from people table successfully done.indicate in Log(checkdata).
+
+[33mcommit d8e831fa1dd984dea1efb099c748d51d8ffc7ce0[m
+Author: nima <nimaabdpoor@gmail.com>
+Date:   Tue Dec 31 20:42:48 2019 +0330
+
+    column Firstname and ID successfully added to people table in FeedreaderDBHelper.
+
+[33mcommit 3a2cfa910a3a397aa3f590ddfaa4cadf89c0df36[m
+Author: nima <nimaabdpoor@gmail.com>
+Date:   Mon Dec 30 21:12:12 2019 +0330
+
+    reading people.csv
+
+[33mcommit 8ff5437534f94a9e637895b6013bb72ecc572479[m
+Author: nima <nimaabdpoor@gmail.com>
+Date:   Mon Dec 30 11:19:24 2019 +0330
+
+    start the project

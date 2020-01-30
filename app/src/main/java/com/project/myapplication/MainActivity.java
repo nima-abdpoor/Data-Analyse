@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
                 .rotationBy(5 * 360f)
                 .scaleX(1f)
                 .scaleY(1f)
-                .setDuration(2000);
+                .setDuration(1500);
     }
     public void readfilepeople(){
         read_from_file_second readfromsecond=new read_from_file_second();
