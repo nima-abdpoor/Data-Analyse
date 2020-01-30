@@ -49,42 +49,42 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //this is for version 2 of app
-//        circleMenu =findViewById(R.id.circlemenu);
-//        circleMenu
-//                .setMainMenu(Color.parseColor("#FF5722"),R.drawable.add2,R.drawable.remove)
-//                .addSubMenu(Color.parseColor("#FFFFFF"),R.drawable.phase1)
-//                .addSubMenu(Color.parseColor("#FFFFFF"),R.drawable.phase2)
-//                .addSubMenu(Color.parseColor("#FFFFFF"),R.drawable.three)
-//                .addSubMenu(Color.parseColor("#FFFFFF"),R.drawable.four)
-//                .addSubMenu(Color.parseColor("#FFFFFF"),R.drawable.help)
-//                .setOnMenuSelectedListener(new OnMenuSelectedListener() {
-//                    @Override
-//                    public void onMenuSelected(int index) {
-//                        if(index == 0){
-//                            Intent intent4 = new Intent(MainActivity.this,Phase2.class);
-//                            startActivity(intent4);
-//                        }
-//                        else if(index == 1){
-//                            Intent intent = new Intent(MainActivity.this,phase1Activity.class);
-//                            startActivity(intent);
-//                        }
-//                        else if(index == 2){
-//                            activityforphse3();
-//                        }
-//                        else if(index == 3){
-//                            Intent intent3 = new Intent(MainActivity.this,phase4.class);
-//                            startActivity(intent3);
-//                        }
-//                        else if(index == 4){
-//                            help();
-//                        }
-//                    }
-//                });
-//        circleMenu.setTranslationX(-1000f);
-//        circleMenu.setTranslationY(-1000f);
-//        circleMenu.setScaleX(0.2f);
-//        circleMenu.setScaleY(0.2f);
-//        customAnimation();
+        circleMenu =findViewById(R.id.circlemenu);
+        circleMenu
+                .setMainMenu(Color.parseColor("#FF5722"),R.drawable.add2,R.drawable.remove)
+                .addSubMenu(Color.parseColor("#FFFFFF"),R.drawable.phase1)
+                .addSubMenu(Color.parseColor("#FFFFFF"),R.drawable.phase2)
+                .addSubMenu(Color.parseColor("#FFFFFF"),R.drawable.three)
+                .addSubMenu(Color.parseColor("#FFFFFF"),R.drawable.four)
+                .addSubMenu(Color.parseColor("#FFFFFF"),R.drawable.help)
+                .setOnMenuSelectedListener(new OnMenuSelectedListener() {
+                    @Override
+                    public void onMenuSelected(int index) {
+                        if(index == 0){
+                            Intent intent4 = new Intent(MainActivity.this,Phase2.class);
+                            startActivity(intent4);
+                        }
+                        else if(index == 1){
+                            Intent intent = new Intent(MainActivity.this,phase1Activity.class);
+                            startActivity(intent);
+                        }
+                        else if(index == 2){
+                            activityforphse3();
+                        }
+                        else if(index == 3){
+                            Intent intent3 = new Intent(MainActivity.this,phase4.class);
+                            startActivity(intent3);
+                        }
+                        else if(index == 4){
+                            help();
+                        }
+                    }
+                });
+        circleMenu.setTranslationX(-1000f);
+        circleMenu.setTranslationY(-1000f);
+        circleMenu.setScaleX(0.2f);
+        circleMenu.setScaleY(0.2f);
+        customAnimation();
         read_from_file_second.i=0;
         Readfromphones.i=0;
         Readfromcars.i=0;
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         Readfromaccounts.i=0;
         Readfromownership.i=0;
         SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(this);
-        boolean isfirstrun=sharedPreferences.getBoolean("FIRSTRUN",true);
+        boolean isfirstrun=sharedPreferences.getBoolean("RUN",true);
         if (isfirstrun) {
             Toast.makeText(this,"reading file",Toast.LENGTH_SHORT).show();
             readfilepeople();
@@ -109,22 +109,23 @@ public class MainActivity extends AppCompatActivity {
             readfileownerships();
             readfilerelationships();
             SharedPreferences.Editor editor=sharedPreferences.edit();
-            editor.putBoolean("FIRSTRUN",false);
+            editor.putBoolean("RUN",false);
             editor.commit();
         }
 
 
+
     }
-//    private void customAnimation() {
-//        circleMenu.animate()
-//                .translationX(0)
-//                .translationY(0)
-//                .rotation(200f)
-//                .rotationBy(5 * 360f)
-//                .scaleX(1f)
-//                .scaleY(1f)
-//                .setDuration(2000);
-//    }
+    private void customAnimation() {
+        circleMenu.animate()
+                .translationX(0)
+                .translationY(0)
+                .rotation(200f)
+                .rotationBy(5 * 360f)
+                .scaleX(1f)
+                .scaleY(1f)
+                .setDuration(2000);
+    }
     public void readfilepeople(){
         read_from_file_second readfromsecond=new read_from_file_second();
         InputStream inputStream = getResources().openRawResource(R.raw.people);
@@ -345,43 +346,43 @@ public class MainActivity extends AppCompatActivity {
     public void confirmbottom(View view) {
     }
                  //this is for version 2 of app
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        SubMenu intentSubmenu =  menu.addSubMenu("phase1");
-//        intentSubmenu.add("phase1").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-//            @Override
-//            public boolean onMenuItemClick(MenuItem menuItem) {
-//                Intent intent4 = new Intent(MainActivity.this,Phase2.class);
-//                startActivity(intent4);
-//                return false;
-//            }
-//        });
-//        intentSubmenu.add("phase3").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-//            @Override
-//            public boolean onMenuItemClick(MenuItem menuItem) {
-//                Intent intent2 = new Intent(MainActivity.this,phase3.class);
-//                startActivity(intent2);
-//                return false;
-//            }
-//        });
-//        intentSubmenu.add("phase2").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-//            @Override
-//            public boolean onMenuItemClick(MenuItem menuItem) {
-//                Intent intent = new Intent(MainActivity.this,phase1Activity.class);
-//                startActivity(intent);
-//                return false;
-//            }
-//        });
-//        intentSubmenu.add("phase4").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-//            @Override
-//            public boolean onMenuItemClick(MenuItem menuItem) {
-//                Intent intent3 = new Intent(MainActivity.this,phase4.class);
-//                startActivity(intent3);
-//                return false;
-//            }
-//        });
-//        return super.onCreateOptionsMenu(menu);
-//    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        SubMenu intentSubmenu =  menu.addSubMenu("phase1");
+        intentSubmenu.add("phase1").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                Intent intent4 = new Intent(MainActivity.this,Phase2.class);
+                startActivity(intent4);
+                return false;
+            }
+        });
+        intentSubmenu.add("phase3").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                Intent intent2 = new Intent(MainActivity.this,phase3.class);
+                startActivity(intent2);
+                return false;
+            }
+        });
+        intentSubmenu.add("phase2").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                Intent intent = new Intent(MainActivity.this,phase1Activity.class);
+                startActivity(intent);
+                return false;
+            }
+        });
+        intentSubmenu.add("phase4").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                Intent intent3 = new Intent(MainActivity.this,phase4.class);
+                startActivity(intent3);
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
+    }
     public void activityforphse3(){
         Intent intent3 = new Intent(MainActivity.this,phase3.class);
         startActivity(intent3);

@@ -3,10 +3,11 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Toast;
 
 public class FeedreaderDBHelper  extends SQLiteOpenHelper {
     MainActivity mainActivity=new MainActivity();
-    public static final int database_version=1;
+    public static final int database_version=2;
     public static final String database_name="Feedreader.db";
     public FeedreaderDBHelper( Context context) {
         super(context, database_name, null, database_version);
@@ -16,6 +17,7 @@ public class FeedreaderDBHelper  extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        Log.i("database","is in table");
         String Query="Create table people(" +
                 "'firstname' Text ," +
                 "'lastname' Text ," +
