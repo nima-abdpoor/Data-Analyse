@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     public static int sizetransactions=0;
     public static int sizeownerships=0;
     public static int sizerelationships=0;
-    CircleMenu circleMenu;
+    CircleMenu        circleMenu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
