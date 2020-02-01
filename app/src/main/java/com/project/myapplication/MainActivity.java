@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
+import android.view.Window;
 import android.widget.Toast;
 
 import com.hitomi.cmlibrary.CircleMenu;
@@ -47,11 +48,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
         //this is for version 2 of app
         circleMenu =findViewById(R.id.circlemenu);
         circleMenu
-                .setMainMenu(Color.parseColor("#FF5722"),R.drawable.add2,R.drawable.remove)
+                .setMainMenu(Color.parseColor("#424D33"),R.drawable.add2,R.drawable.remove)
                 .addSubMenu(Color.parseColor("#FFFFFF"),R.drawable.phase1)
                 .addSubMenu(Color.parseColor("#FFFFFF"),R.drawable.phase2)
                 .addSubMenu(Color.parseColor("#FFFFFF"),R.drawable.three)
@@ -348,7 +350,7 @@ public class MainActivity extends AppCompatActivity {
                  //this is for version 2 of app
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        SubMenu intentSubmenu =  menu.addSubMenu("phase1");
+        SubMenu intentSubmenu =  menu.addSubMenu("phases");
         intentSubmenu.add("phase1").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
@@ -357,19 +359,19 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-        intentSubmenu.add("phase3").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                Intent intent2 = new Intent(MainActivity.this,phase3.class);
-                startActivity(intent2);
-                return false;
-            }
-        });
         intentSubmenu.add("phase2").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
                 Intent intent = new Intent(MainActivity.this,phase1Activity.class);
                 startActivity(intent);
+                return false;
+            }
+        });
+        intentSubmenu.add("phase3").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                Intent intent2 = new Intent(MainActivity.this,phase3.class);
+                startActivity(intent2);
                 return false;
             }
         });

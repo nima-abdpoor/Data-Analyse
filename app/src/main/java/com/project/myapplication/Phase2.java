@@ -23,17 +23,53 @@ public class Phase2 extends AppCompatActivity {
     TextView textView;
     TextView textView2;
     Button button;
+    Button people;
+    Button cars;
+    Button homes;
+    Button ownerships;
     ArrayAdapter<String> arrayAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phase2);
         listView =findViewById(R.id.ListView);
-        textView=findViewById(R.id.textView2);
-        textView2=findViewById(R.id.textView3);
+        people =findViewById(R.id.people);
+        cars=findViewById(R.id.cars);
+        homes=findViewById(R.id.homes);
+        ownerships=findViewById(R.id.ownerships);
+        //textView=findViewById(R.id.textView2);
+        //textView2=findViewById(R.id.textView3);
         button =findViewById(R.id.button);
-        button.setVisibility(View.GONE);
+        //button.setVisibility(View.GONE);
         mylist=new ArrayList<>();
+        people.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mylist =getallpeople();
+                Refreshdisplay();
+            }
+        });
+        cars.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mylist=getallcars();
+                Refreshdisplay();
+            }
+        });
+        homes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mylist =getallhomes();
+                Refreshdisplay();
+            }
+        });
+        ownerships.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mylist=getallownerships();
+                Refreshdisplay();
+            }
+        });
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,7 +87,7 @@ public class Phase2 extends AppCompatActivity {
         FeedreaderDBHelper feedreaderDBHelper=new FeedreaderDBHelper(this);
         SQLiteDatabase sqLiteDatabase=feedreaderDBHelper.getReadableDatabase();
         List<String> peoplelist=new ArrayList<>();
-        textView.setText("all people : 10000 نفر");
+        //textView.setText("all people : 10000 نفر");
         Cursor cursor=sqLiteDatabase.rawQuery("select * from 'people'",null);
         while (cursor.moveToNext()){
             String firstname= cursor.getString(cursor.getColumnIndex("firstname"));
@@ -68,7 +104,7 @@ public class Phase2 extends AppCompatActivity {
         FeedreaderDBHelper feedreaderDBHelper=new FeedreaderDBHelper(this);
         SQLiteDatabase sqLiteDatabase=feedreaderDBHelper.getReadableDatabase();
         List<String> peoplelist=new ArrayList<>();
-        textView.setText("all homes : 19816");
+        //textView.setText("all homes : 19816");
         Cursor cursor=sqLiteDatabase.rawQuery("select * from 'homes'",null);
         while (cursor.moveToNext()){
             String nationalcode= cursor.getString(cursor.getColumnIndex("nationalcode"));
@@ -84,7 +120,7 @@ public class Phase2 extends AppCompatActivity {
         FeedreaderDBHelper feedreaderDBHelper=new FeedreaderDBHelper(this);
         SQLiteDatabase sqLiteDatabase=feedreaderDBHelper.getReadableDatabase();
         List<String> peoplelist=new ArrayList<>();
-        textView.setText("all cars : 20023");
+        //textView.setText("all cars : 20023");
         Cursor cursor=sqLiteDatabase.rawQuery("select * from 'cars'",null);
         while (cursor.moveToNext()){
             String car= cursor.getString(cursor.getColumnIndex("car"));
@@ -99,7 +135,7 @@ public class Phase2 extends AppCompatActivity {
         FeedreaderDBHelper feedreaderDBHelper=new FeedreaderDBHelper(this);
         SQLiteDatabase sqLiteDatabase=feedreaderDBHelper.getReadableDatabase();
         List<String> peoplelist=new ArrayList<>();
-        textView.setText("all ownerships");
+        //textView.setText("all ownerships");
         Cursor cursor=sqLiteDatabase.rawQuery("select * from 'ownerships'",null);
         while (cursor.moveToNext()){
             String from= cursor.getString(cursor.getColumnIndex("from"));
@@ -116,7 +152,7 @@ public class Phase2 extends AppCompatActivity {
         menu.add("Get all peoples").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                textView2.setVisibility(View.GONE);
+               // textView2.setVisibility(View.GONE);
                 button.setVisibility(View.VISIBLE);
                 mylist =getallpeople();
                 Refreshdisplay();
@@ -126,7 +162,7 @@ public class Phase2 extends AppCompatActivity {
         menu.add("Get all homes").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                textView2.setVisibility(View.GONE);
+                //textView2.setVisibility(View.GONE);
                 button.setVisibility(View.VISIBLE);
                 mylist =getallhomes();
                 Refreshdisplay();
@@ -136,7 +172,7 @@ public class Phase2 extends AppCompatActivity {
         menu.add("Get all cars").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                textView2.setVisibility(View.GONE);
+                //textView2.setVisibility(View.GONE);
                 button.setVisibility(View.VISIBLE);
                 mylist=getallcars();
                 Refreshdisplay();
@@ -146,7 +182,7 @@ public class Phase2 extends AppCompatActivity {
         menu.add("Get all ownerships").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                textView2.setVisibility(View.GONE);
+                //textView2.setVisibility(View.GONE);
                 button.setVisibility(View.VISIBLE);
                 mylist=getallownerships();
                 Refreshdisplay();

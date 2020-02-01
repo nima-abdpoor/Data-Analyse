@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#64B3F3"
+    android:background="@color/colorPrimaryDark"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
@@ -12,7 +12,8 @@
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#F8BA5F"
+        android:background="#424D33"
+        android:textColor="#FFFFFF"
         android:layout_alignBottom="@id/ListView"
         android:text="home" />
 

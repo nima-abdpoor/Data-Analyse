@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#64B3F3"
+    android:background="@color/colorPrimaryDark"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
@@ -11,7 +11,8 @@
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#E9A036"
+        android:background="#424D33"
+        android:textColor="#FFFFFF"
         android:layout_alignBottom="@id/ListView"
         android:text="home" />
     <TextView
@@ -20,7 +21,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="20dp"
-        android:textColor="#000000"
+        android:textColor="#424D33"
         android:layout_margin="10dp"
         android:text="FINAL SUSPECTS" />
 

@@ -3,46 +3,69 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#64B3F3"
+    android:background="@color/colorPrimaryDark"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/people"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#424D33"
+            android:textColor="#FFFFFF"
+            android:layout_weight="1"
+            android:text="people" />
+
+        <Button
+            android:id="@+id/cars"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#424D33"
+            android:textColor="#FFFFFF"
+            android:layout_weight="1"
+            android:text="cars" />
+
+        <Button
+            android:id="@+id/homes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#424D33"
+            android:textColor="#FFFFFF"
+            android:layout_weight="1"
+            android:text="homes" />
+
+        <Button
+            android:id="@+id/ownerships"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#424D33"
+            android:textColor="#FFFFFF"
+            android:layout_weight="1"
+            android:text="ownerships" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#F8BA5F"
+        android:background="#424D33"
+        android:textColor="#FFFFFF"
         android:layout_alignBottom="@id/ListView"
         android:text="home" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:textColor="#000000"
-        android:textSize="30dp"
-        android:text="SELECT FROM TOP AND RIGHT" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="false"
-        android:layout_margin="10dp"
-        android:gravity="center"
-        android:textColor="#000000"
-        android:textSize="20dp"
-        android:text="" />
 
     <ListView
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:id="@+id/ListView"
-        android:scrollbarSize="40dp"
-        android:layout_marginTop="40dp"
+        android:scrollbarSize="42dp"
+        android:layout_marginTop="42dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
